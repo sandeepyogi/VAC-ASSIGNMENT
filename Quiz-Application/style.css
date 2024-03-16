@@ -1,42 +1,79 @@
 /* Your CSS styles */
+
+/* Reset default styles and set basic styles for the page */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f0f0f0;
 }
+
+/* Define styles for the main container */
 .container {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+/* Styles for the question element */
 #question {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 20px;
+    color: #333;
 }
+
+/* Styles for answer buttons */
 .btn {
     display: block;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
     text-align: center;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    background-color: #4caf50;
-    color: white;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    background-color: #007bff; /* Default button background color */
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for button hover effect */
 }
+
+/* Button hover effect */
 .btn:hover {
-    background-color: #45a049;
+    background-color: #0056b3; /* Darker shade of the button color on hover */
 }
+
+/* Styles for correct answer buttons */
 .correct {
-    background-color: #4caf50;
+    background-color: #28a745; /* Green color for correct answer buttons */
 }
+
+/* Styles for incorrect answer buttons */
 .incorrect {
-    background-color: #f44336;
+    background-color: #dc3545; /* Red color for incorrect answer buttons */
 }
+
+/* Next button */
+#next-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#next-btn:hover {
+    background-color: #0056b3;
+}
+
