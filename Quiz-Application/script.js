@@ -1,79 +1,86 @@
+// Quiz data - replace with your new set of questions
 const questions = [
     {
-        question: "What is the capital city of France?",
+        question: "What is the capital city of Italy?",
         answers: [
             { text: "Berlin", correct: false},
             { text: "Madrid", correct: false},
-            { text: "Paris", correct: true},
-            { text: "London", correct: false},
+            { text: "Rome", correct: true},
+            { text: "Paris", correct: false},
         ]
     },
     {
-        question: "Which planet is known as the Red Planet?",
+        question: "Who discovered gravity?",
         answers: [
-            { text: "Earth", correct: false},
-            { text: "Mars", correct: true},
-            { text: "Jupiter", correct: false},
-            { text: "Venus", correct: false},
+            { text: "Isaac Newton", correct: true},
+            { text: "Albert Einstein", correct: false},
+            { text: "Galileo Galilei", correct: false},
+            { text: "Nikola Tesla", correct: false},
         ]
     },
     {
-        question: "Who wrote the play 'Romeo and Juliet'?",
+        question: "What is the largest mammal on Earth?",
         answers: [
-            { text: "William Shakespeare", correct: true},
-            { text: "Jane Austen", correct: false},
-            { text: "Charles Dickens", correct: false},
-            { text: "Emily Bronte", correct: false},
+            { text: "Elephant", correct: false},
+            { text: "Giraffe", correct: false},
+            { text: "Blue Whale", correct: true},
+            { text: "Hippo", correct: false},
         ]
     },
     {
-        question: "Which country is famous for the Taj Mahal?",
+        question: "Who painted the Mona Lisa?",
         answers: [
-            { text: "India", correct: true},
-            { text: "China", correct: false},
-            { text: "Egypt", correct: false},
-            { text: "Turkey", correct: false},
+            { text: "Leonardo da Vinci", correct: true},
+            { text: "Pablo Picasso", correct: false},
+            { text: "Vincent van Gogh", correct: false},
+            { text: "Claude Monet", correct: false},
         ]
     }
 ];
 
+// DOM elements
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
 
+// Variables
 let currentQuestionIndex = 0;
 let score = 0;
 
-function startQuiz(){
+// Function to start the quiz
+function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Next";
     showQuestion();
 }
 
-function showQuestion(){
+// Function to display a question
+function showQuestion() {
     resetState();
-    let currentQuestion = questions[currentQuestionIndex];
-    let questionNo = currentQuestionIndex + 1;
-    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+    const currentQuestion = questions[currentQuestionIndex];
+    const questionNo = currentQuestionIndex + 1;
+    questionElement.innerText = questionNo + ". " + currentQuestion.question;
 
     currentQuestion.answers.forEach(answer => {
         const button = document.createElement("button");
-        button.innerHTML = answer.text;
+        button.innerText = answer.text;
         button.classList.add("btn");
         answerButtons.appendChild(button);
         button.addEventListener("click", () => selectAnswer(answer.correct));
     });
 }
 
-function resetState(){
+// Function to reset the state of the quiz
+function resetState() {
     nextButton.style.display = "none";
     while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
     }
 }
 
-function selectAnswer(correct){
+// Function to handle user selection of an answer
+function selectAnswer(correct) {
     if (correct) {
         score++;
     }
@@ -91,14 +98,16 @@ function selectAnswer(correct){
     nextButton.style.display = "block";
 }
 
-function showScore(){
+// Function to display the final score
+function showScore() {
     resetState();
-    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+    questionElement.innerText = `You scored ${score} out of ${questions.length}!`;
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
 }
 
-function handleNextButton(){
+// Function to handle the "Next" button click
+function handleNextButton() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         showQuestion();
@@ -107,6 +116,8 @@ function handleNextButton(){
     }
 }
 
+// Event listener for the "Next" button
 nextButton.addEventListener("click", handleNextButton);
 
+// Start the quiz
 startQuiz();
